@@ -13,7 +13,7 @@ namespace task1
             Console.WriteLine(" Введите возраст");
             string age = Console.ReadLine();
 
-            //Проверяем значение возраста (число да/нет)
+            //Проверяем значение возраста (число да/нет, больше нуля да/нет)
             while (double.TryParse(age, out double numericAge) == false || double.Parse(age) <=0) {
                 Console.WriteLine(" Введите число, которое больше нуля ");
                 age = Console.ReadLine();
@@ -21,7 +21,7 @@ namespace task1
             Console.WriteLine(" Введите число от 3 до 9");
             string number = Console.ReadLine();
 
-            //Проверяем на корректность введенное значение           
+            //Проверяем на корректность введенное значение числа            
             while (double.TryParse(number, out double numberInt) == false) { 
                 Console.WriteLine(" Некорректные данные! Введите число от 3 до 9!");
                 number = Console.ReadLine();
@@ -34,7 +34,7 @@ namespace task1
             //Проверяем возраст на чётность
             string ageParity = Parity(double.Parse(age));
 
-            //Проверяем деление квадрата на введеное число
+            //Проверяем деление корня на введеное число и выводим результат
             string divisibility = divisibilityOfaNumber(double.Parse(age), double.Parse(number));
             Console.WriteLine(" " + name + ", я проанализировала введённые тобой данные и могу заявить:" +
                 "\n     1) Твой возраст — это " + ageParity +
@@ -50,9 +50,9 @@ namespace task1
                 else{
                     return "нечётное число";
                 }
-        }
+         }
 
-            //функция проверки деления квадрата возраста на число
+            //функция проверки деления корня возраста на число
         static string divisibilityOfaNumber(double age, double number) {
             double sqrtAge = Math.Ceiling(Math.Sqrt(age));           
                 if (sqrtAge % number == 0) {
@@ -61,7 +61,7 @@ namespace task1
                 else{
                     return "не делится";
                 }
-            }
+        }
 
     }
         
