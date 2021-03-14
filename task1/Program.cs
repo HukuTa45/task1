@@ -6,7 +6,7 @@ namespace task1
     {
         static void Main(string[] args)
         {
-
+            
             //Вводим исходные данные
             Console.WriteLine(" Введите Имя");
             string name = Console.ReadLine();
@@ -14,12 +14,10 @@ namespace task1
             string age = Console.ReadLine();
 
             //Проверяем значение возраста (число да/нет)
-            while (double.TryParse(age, out double numericAge) == false)
-            {
-                Console.WriteLine(" Введите число!");
+            while (double.TryParse(age, out double numericAge) == false || double.Parse(age) <=0){
+                Console.WriteLine(" Введите число, которое больше нуля ");
                 age = Console.ReadLine();
             }
-
             Console.WriteLine(" Введите число от 3 до 9");
             string number = Console.ReadLine();
 
@@ -38,46 +36,39 @@ namespace task1
             }
 
             //Проверяем возраст на чётность
-            string ageParity = parity(double.Parse(age));
-
+            string ageParity = Parity(double.Parse(age));
 
             //Проверяем деление квадрата на введеное число
             string divisibility = divisibilityOfaNumber(double.Parse(age), double.Parse(number));
+            Console.WriteLine(" " + name + ", я проанализировала введённые тобой данные и могу заявить:" +
+                "\n     1) Твой возраст — это " + ageParity +
+                "\n     2) Квадратный корень, полученный из твоего возраста "+ divisibility + " на " + number);
 
-            Console.WriteLine(" " + name + ", я проанализировала введённые тобой данные и могу заявить:\n     1) Твой возраст — это " + ageParity +
-                "\n     2) Квадратный корень, полученный из твоего возраста " + divisibility + " на " + number);
-
-
+        }
 
             // функция для проверки чётности
-             string parity(double number)
-            {
-                if (number % 2 == 0)
-                {
+         static string Parity(double number){            
+                if (number % 2 == 0){ 
                     return "чётное число";
                 }
-                else
-                {
+                else{
                     return "нечётное число";
                 }
-            }
+        }
 
             //функция проверки деления квадрата возраста на число
-            string divisibilityOfaNumber(double age, double number)
-            {
-                double sqrAge = Math.Pow(age, 2);
-                if (sqrAge % number == 0)
-                {
+        static string divisibilityOfaNumber(double age, double number){
+            double sqrtAge = Math.Ceiling(Math.Sqrt(age));
+            Console.WriteLine("Корень    " + sqrtAge);
+                if (sqrtAge % number == 0){
                     return "делится";
                 }
-                else
-                {
+                else{
                     return "не делится";
                 }
             }
 
-
-        }
-        
     }
+        
 }
+
